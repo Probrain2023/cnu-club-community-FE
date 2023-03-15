@@ -3,7 +3,7 @@
 
 function App() {
   return (
-    <div>minseok branch push</div>
+    <div>second test</div>
   );
 }
 
