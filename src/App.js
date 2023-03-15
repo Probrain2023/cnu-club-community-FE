@@ -3,7 +3,7 @@
 
 function App() {
   return (
-    <div>리퀘스트 해줘~~</div>
+    <div>이번엔 내가간다</div>
   );
 }
 
