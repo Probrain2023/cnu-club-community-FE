@@ -1,9 +1,26 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import GlobalStyles from './GrobalStyles';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+import Home from './components/home/Home';
 
 
 
 function App() {
   return (
-    <div>이번엔 내가간다</div>
+    <BrowserRouter>
+      <GlobalStyles />
+
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home/>} />
+      </Routes>
+
+      <Footer />
+
+    </BrowserRouter>
+
   );
 }
 
