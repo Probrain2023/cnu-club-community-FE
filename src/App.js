@@ -1,6 +1,6 @@
 function App() {
   return (
-    <div>second test</div>
+    <div>이번엔 내가간다</div>
   );
 }
 
