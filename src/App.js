@@ -10,7 +10,7 @@ import Event from './components/event/Event';
 
 function App() {
   return (
-    <BrowserRouter>
+      <BrowserRouter>
       <GlobalStyles />
 
       <Header />
