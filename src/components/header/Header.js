@@ -8,7 +8,8 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 const TopContainer = styled.div`
   width: 100vw;
   height: 15vh;
-  /* background-color: rgba(0, 0, 0, 0.6); */
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0);
   display: flex;
   flex-direction: column;
 `;
