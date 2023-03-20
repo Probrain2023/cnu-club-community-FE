@@ -181,6 +181,18 @@ function Header() {
           <CommunityLink to="/event" >이벤트</CommunityLink>
           {eventMatch ? <Circle layoutId="circle" /> : null}
         </LinkContainer>
+
+        {
+            clubMatch ?
+            <select style={{textAlign: 'center' ,backgroundColor: "rgba(0,0,0,0.7)", color: "white", borderRadius:"1rem"}}>
+                <option>전체</option>
+                <option>PROBRAIN</option>
+                <option>ARGOS</option>
+                <option>SPG</option>
+                <option>ANA</option>
+            </select> : null
+        }
+
       </SecondContainer>
     </TopContainer>
   );
