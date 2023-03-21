@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link, useMatch } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-
+import { faMagnifyingGlass, faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { useState, useRef, useEffect } from 'react';
 
 const TopContainer = styled.div`
   width: 100vw;
@@ -160,15 +160,106 @@ const Circle = styled(motion.span)`
   border-radius: 0.7rem;
 `;
 
+const ClubLinkContainer = styled(motion.div)`
+  position: relative;
+  display: flex;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 7rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  @media (min-width: 992px) {
+    width: 9rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
+  @media (min-width: 1400px) {
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  cursor: pointer;
+`
+const ClubLinkShow = styled(motion.div)`
+  width: 13rem;
+  height: 16rem;
+  /* border: 1px solid black; */
+  border-radius: 3%;
+  /* background-color: tomato; */
+  position: absolute;
+  top: 2rem;
+  @media (min-width: 992px) {
+    top: 4rem;
+  }
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+`
+const ClubLinkShowVariants = {
+  init: {
+    scale:0
+  },
+  animate: {
+    scale: 1,
+    transition: {
+      duration: 0.3
+    }
+  }
+}
+
+const ClubLinkDiv = styled(motion.div)`
+  width:100%;
+  background-color: white;
+  /* border-bottom: 1px solid black; */
+  height:2rem;
+  display: flex;
+  align-items: center;
+`
+
+const ClubLink = styled(motion(Link))`
+  width:100%;
+  margin-left: 1rem;
+  &:hover{
+    color: white;
+  }
+`
+const ClubLinkVariant = {
+  hover : {
+    color: "rgba(255,255,255,1)",
+    backgroundColor: "rgba(0,0,0,1)"
+  },
+  
+}
+
+
+
 function Header() {
 
+  
     
     const homeMatch = useMatch("/");
     const clubMatch = useMatch("/club");
     const majorMatch = useMatch("/major");
     const eventMatch = useMatch("/event");
+    const [clubIsClick, setClubIsClick] = useState(false);
 
+    const clubLinkContainerRef = useRef(null);
+    const clubLinkShowRef = useRef(null);
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+    
+      setClubIsClick(false);
+    
+    };
 
+    // document.addEventListener("click", handleClickOutside);
+
+    //  return () => {
+    // document.removeEventListener("click", handleClickOutside);
+    // };
+  }, [clubLinkContainerRef, clubLinkShowRef]);
 
   return (
     <TopContainer>
@@ -204,7 +295,7 @@ function Header() {
           {eventMatch ? <Circle layoutId="circle" /> : null}
         </LinkContainer>
 
-        {
+        {/* {
             clubMatch ?
             <select style={{textAlign: 'center' ,backgroundColor: "rgba(0,0,0,0.7)", color: "white", borderRadius:"1rem"}}>
                 <option>전체</option>
@@ -213,7 +304,41 @@ function Header() {
                 <option>SPG</option>
                 <option>ANA</option>
             </select> : null
+        } */}
+        {
+          clubMatch ?
+          <ClubLinkContainer ref={clubLinkContainerRef} onClick={() => {setClubIsClick(!clubIsClick);}}>
+            전체
+            <FontAwesomeIcon icon={faCaretDown} />
+            <ClubLinkShow ref={clubLinkShowRef} variants={ClubLinkShowVariants} initial="init" animate={clubIsClick ? "animate" : "init"}>
+              <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
+                <ClubLink to="/club">전체</ClubLink>
+              </ClubLinkDiv>
+              <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
+                <ClubLink to="/club/probrain">PROBRAIN</ClubLink>
+              </ClubLinkDiv>
+              <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
+                <ClubLink to="/club/admin">ADMIN</ClubLink>
+              </ClubLinkDiv>
+              <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
+                <ClubLink to="/club/argos">ARGOS</ClubLink>
+              </ClubLinkDiv>
+              <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
+                <ClubLink to="/club/ana">A&A</ClubLink>
+              </ClubLinkDiv>
+              <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover"> 
+                <ClubLink to="/club/motion">MOTION</ClubLink>
+              </ClubLinkDiv>
+              <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
+                <ClubLink to="/club/spg">SPG</ClubLink>
+              </ClubLinkDiv>
+              <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
+                <ClubLink to="/club/daiv">DAIV</ClubLink>
+              </ClubLinkDiv>
+            </ClubLinkShow>
+          </ClubLinkContainer> : null
         }
+        
 
       </SecondContainer>
     </TopContainer>

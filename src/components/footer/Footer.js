@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 
-
+const TopContainer = styled.div`
+    
+    color: black;
+    background-color: tomato;
+    display: none;
+`
 
 function Footer(){
 
     return (
-        <div style={{display:"none"}}>Footer</div>
+        <TopContainer>BY PROB</TopContainer>
     );
 }
 
