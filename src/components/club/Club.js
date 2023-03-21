@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap"; //2번
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import Content from '../contentsData/Content';
 
 // Small = sm = ≥576px
 // Medium = md = ≥768px
@@ -30,15 +30,16 @@ const TopContainer = styled.div`
   width: 100vw;
   height: 200vh;
   background-color: mintcream;
+  position: absolute;
+  top:0;
 `;
 
-const ReactContainer = styled(Container)`
-`
+
 
 function Club() {
   return (
     <TopContainer>
-        
+        <Content></Content>
 
     </TopContainer>
   );
