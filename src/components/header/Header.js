@@ -61,7 +61,8 @@ const Search = styled(motion(Link))`
 
 const SearchVariant = {
   hover : {rotate: 360, transition:{duration: "0.5"}},
-  initial : {rotate: 0}
+  initial : {rotate: 0},
+  tap:{scale:0.9}
 }
 
 const LoginButton = styled(motion.button)`
@@ -94,7 +95,8 @@ const Login = styled(motion(Link))`
 `;
 
 const LoginVariants = {
-  hover: {backgroundColor: "rgba(95,158,160,0.8)", scale:1.05}
+  hover: {backgroundColor: "rgba(95,158,160,0.8)", scale:1.05},
+  tap: {backgroundColor: "rgba(95,158,160,0.8)", scale:0.9}
 }
 
 const SearchLoginContainer = styled.div`
@@ -174,10 +176,10 @@ function Header() {
         <MainTitle to="/" variants={TitleVariant} initial="initial" whileTap="tap" whileHover="hover">Com-Unity</MainTitle>
 
         <SearchLoginContainer>
-          <Search to="/search" variants={SearchVariant} whileHover="hover" initial="initial">
+          <Search to="/search" variants={SearchVariant} whileTap="tap" whileHover="hover" initial="initial">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Search>
-          <Login to="/login" variants={LoginVariants} whileHover="hover">
+          <Login to="/login" variants={LoginVariants} whileTap="tap" whileHover="hover">
             <LoginButton>Login</LoginButton>
           </Login>
         </SearchLoginContainer>
