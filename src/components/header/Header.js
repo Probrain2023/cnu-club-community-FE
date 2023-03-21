@@ -21,13 +21,13 @@ const FirstContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const MainTitle = styled(Link)`
+const MainTitle = styled(motion(Link))`
   margin-top: 0.5vh;
   font-size: 1.5rem;
   color: black;
-  &:hover {
+  /* &:hover {
     color: black;
-  }
+  } */
   @media (min-width: 992px) {
     font-size: 2rem;
   }
@@ -36,6 +36,12 @@ const MainTitle = styled(Link)`
   }
   margin-left: 10vw;
 `;
+
+const TitleVariant = {
+  hover: {scale: 1.2, color:"black"},
+  initial: {scale:1, color:"black"},
+  tap: {scale: 0.8, color: "black"}
+}
 
 const Search = styled(motion(Link))`
   font-size: 1rem;
@@ -52,6 +58,12 @@ const Search = styled(motion(Link))`
     font-size: 2rem;
   }
 `;
+
+const SearchVariant = {
+  hover : {rotate: 360, transition:{duration: "0.5"}},
+  initial : {rotate: 0}
+}
+
 const LoginButton = styled(motion.button)`
   color: white;
   &:hover {
@@ -65,7 +77,7 @@ const Login = styled(motion(Link))`
   height: 1.5rem;
   color: white;
   text-align: center;
-  background-color: #5f9ea0;
+  background-color: rgba(95,158,160,1);
   @media (min-width: 992px) {
     width: 5rem;
     height: 2rem;
@@ -80,6 +92,11 @@ const Login = styled(motion(Link))`
   align-items: center;
   justify-content: center;
 `;
+
+const LoginVariants = {
+  hover: {backgroundColor: "rgba(95,158,160,0.8)", scale:1.05}
+}
+
 const SearchLoginContainer = styled.div`
   margin-top: 1vw;
   margin-right: 10vw;
@@ -154,13 +171,13 @@ function Header() {
   return (
     <TopContainer>
       <FirstContainer>
-        <MainTitle to="/">Com-Unity</MainTitle>
+        <MainTitle to="/" variants={TitleVariant} initial="initial" whileTap="tap" whileHover="hover">Com-Unity</MainTitle>
 
         <SearchLoginContainer>
-          <Search to="/search">
+          <Search to="/search" variants={SearchVariant} whileHover="hover" initial="initial">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Search>
-          <Login to="/login">
+          <Login to="/login" variants={LoginVariants} whileHover="hover">
             <LoginButton>Login</LoginButton>
           </Login>
         </SearchLoginContainer>
