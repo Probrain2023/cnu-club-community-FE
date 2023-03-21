@@ -29,7 +29,7 @@ import Content from '../contentsData/Content';
 const TopContainer = styled.div`
   width: 100vw;
   height: 200vh;
-  background-color: mintcream;
+  background-color: #F8F9FA;
   position: absolute;
   top:0;
 `;
