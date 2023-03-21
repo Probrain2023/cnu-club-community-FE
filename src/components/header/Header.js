@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link, useMatch } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faCaretDown, faBorderAll } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef, useEffect } from 'react';
 
 const TopContainer = styled.div`
@@ -245,6 +245,14 @@ function Header() {
     const eventMatch = useMatch("/event");
     const [clubIsClick, setClubIsClick] = useState(false);
 
+    const probrainMatch = useMatch("/club/probrain");
+    const adminMatch = useMatch("/club/admin");
+    const argosMatch = useMatch("/club/argos");
+    const anaMatch = useMatch("/club/ana");
+    const motionMatch = useMatch("/club/motion");
+    const spgMatch = useMatch("/club/spg");
+    const daivMatch = useMatch("/club/daiv");
+
     const clubLinkContainerRef = useRef(null);
     const clubLinkShowRef = useRef(null);
     useEffect(() => {
@@ -306,7 +314,7 @@ function Header() {
             </select> : null
         } */}
         {
-          clubMatch ?
+          clubMatch||probrainMatch||spgMatch||argosMatch||adminMatch||motionMatch||anaMatch||daivMatch ?
           <ClubLinkContainer ref={clubLinkContainerRef} onClick={() => {setClubIsClick(!clubIsClick);}}>
             전체
             <FontAwesomeIcon icon={faCaretDown} />
