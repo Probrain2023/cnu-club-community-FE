@@ -1,0 +1,210 @@
+.topContainer {
+  width: 100vw;
+  height: 15vh;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0);
+  /* background-color: mintcream; */
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+}
+
+.topContainer .firstContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topContainer .mainTitle {
+  margin-top: 0.5vh;
+  font-size: 1.5rem;
+  color: black;
+  /* &:hover {
+    color: black;
+  } */
+  @media (min-width: 992px) {
+    font-size: 2rem;
+  }
+  @media (min-width: 1400px) {
+    font-size: 3rem;
+  }
+  margin-left: 10vw;
+}
+
+.topContainer .searchLoginContainer {
+  margin-top: 1vw;
+  margin-right: 10vw;
+  display: flex;
+}
+
+.topContainer .firstContainer .searchLoginContainer .login {
+  border-radius: 0.2rem;
+  font-size: 1.2rem;
+  width: 4.8rem;
+  height: 2.2rem;
+  color: white;
+  text-align: center;
+  background-color: rgba(95, 158, 160, 1);
+  @media (min-width: 992px) {
+    width: 5rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+  @media (min-width: 1400px) {
+    width: 6rem;
+    height: 2rem;
+    font-size: 1.5rem;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topContainer .firstContainer .searchLoginContainer .search {
+  font-size: 1.3rem;
+  margin-right: 1.6vw;
+  margin-top: 0.4vw;
+
+  /* &:hover {
+    color: black;
+  } */
+
+  @media (min-width: 992px) {
+    font-size: 1.5rem;
+  }
+  @media (min-width: 1400px) {
+    font-size: 2rem;
+  }
+}
+
+.login .loginBtn {
+  color: black;
+}
+
+.login .loginBtn:hover {
+  color: white;
+}
+
+.secondContainer {
+  display: flex;
+  margin-top: 5vh;
+  margin-left: 10vw;
+}
+
+.secondContainer .linkContainer {
+  margin-right: 3vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid white; */
+  display: flex;
+  border-radius: 0.7rem;
+  width: 7.2rem;
+  height: 3.2rem;
+  font-size: 1rem;
+  @media (min-width: 992px) {
+    width: 5rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
+  @media (min-width: 1400px) {
+    width: 6rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  /* color: ${(props) => props.color}; */
+}
+
+.linkContainer .communityLink {
+  font-size: 2.2rem;
+  @media (min-width: 992px) {
+    font-size: 1.7rem;
+  }
+  @media (min-width: 1400px) {
+    font-size: 4rem;
+  }
+  z-index: 2;
+  /* &:hover {
+    color: black;
+  } */
+}
+
+.linkContainer .communityLink a:hover {
+  color: black;
+}
+
+.circle {
+  position: absolute;
+  background-color: #5f9ea0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.7rem;
+}
+
+.secondContainer .clubLinkContainer {
+  position: relative;
+  margin-top: 0.8vh;
+  display: flex;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 7rem;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  @media (min-width: 992px) {
+    width: 5rem;
+    height: 1.5rem;
+    font-size: 0.65rem;
+  }
+  @media (min-width: 1400px) {
+    width: 10rem;
+    height: 3.6rem;
+    font-size: 1.5rem;
+  }
+  cursor: pointer;
+}
+
+.clubLinkContainer .clubLinkShow {
+  width: 13rem;
+  height: 16rem;
+  /* border: 1px solid black; */
+  border-radius: 3%;
+  /* background-color: tomato; */
+  position: absolute;
+  top: 4.2rem;
+  left: 0.1rem;
+  margin-top: -1.7vh;
+  @media (min-width: 992px) {
+    top: 4rem;
+  }
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.clubLinkContainer .clubLinkShow .clubLinkDiv {
+  width: 100%;
+  background-color: white;
+  /* border-bottom: 1px solid black; */
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.clubLinkDiv .clubLink {
+  width: 100%;
+  margin-left: 1rem;
+  /* &:hover {
+    color: white;
+  } */
+}
+
+.clubLinkDiv .clubLink a {
+  display: block;
+}
+
+.clubLinkDiv .clubLink a:hover {
+  color: white;
+}
