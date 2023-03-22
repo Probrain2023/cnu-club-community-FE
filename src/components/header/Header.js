@@ -15,11 +15,21 @@ const TopContainer = ({ children }) => {
 };
 
 const FirstContainer = ({ children }) => {
-  return <div className={styles.FirstContainer}>{children}</div>;
+  return <div className={styles.firstContainer}>{children}</div>;
 };
 
 const MainTitle = ({ children }) => {
-  return <motion.span className={styles.mainTitle}>{children}</motion.span>;
+  return (
+    <motion.span
+      variants={TitleVariant}
+      initial="initial"
+      whileTap="tap"
+      whileHover="hover"
+      className={styles.mainTitle}
+    >
+      <Link to="/">{children}</Link>
+    </motion.span>
+  );
 };
 
 const TitleVariant = {
@@ -29,7 +39,17 @@ const TitleVariant = {
 };
 
 const Search = ({ children }) => {
-  return <motion.span className={styles.search}>{children}</motion.span>;
+  return (
+    <motion.span
+      variants={SearchVariant}
+      whileTap="tap"
+      whileHover="hover"
+      initial="initial"
+      className={styles.search}
+    >
+      <Link to="/search">{children}</Link>
+    </motion.span>
+  );
 };
 
 const SearchVariant = {
@@ -42,7 +62,16 @@ const LoginButton = ({ children }) => {
   return <motion.button className={styles.loginBtn}>{children}</motion.button>;
 };
 const Login = ({ children }) => {
-  return <motion.span className={styles.login}>{children}</motion.span>;
+  return (
+    <motion.span
+      variants={LoginVariants}
+      whileTap="tap"
+      whileHover="hover"
+      className={styles.login}
+    >
+      <Link to="/login">{children}</Link>
+    </motion.span>
+  );
 };
 
 const LoginVariants = {
@@ -51,99 +80,63 @@ const LoginVariants = {
 };
 
 const SearchLoginContainer = ({ children }) => {
-  return <div className={styles.SearchLoginContainer}>{children}</div>;
+  return <div className={styles.searchLoginContainer}>{children}</div>;
 };
 
-const SecondContainer = styled.div`
-  display: flex;
-  margin-top: 5vh;
-  margin-left: 10vw;
-`;
+const SecondContainer = ({ children }) => {
+  return <div className={styles.secondContainer}>{children}</div>;
+};
 
-const LinkContainer = styled.div`
-  margin-right: 3vw;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* border: 1px solid white; */
-  display: flex;
-  border-radius: 0.7rem;
-  width: 3.5rem;
-  height: 1.5rem;
-  font-size: 1rem;
-  @media (min-width: 992px) {
-    width: 5rem;
-    height: 3rem;
-    font-size: 1rem;
-  }
-  @media (min-width: 1400px) {
-    width: 6rem;
-    height: 3rem;
-    font-size: 1.5rem;
-  }
-  color: ${(props) => props.color};
-`;
+const LinkContainer = ({ children, color }) => {
+  return (
+    <div className={styles.linkContainer} style={{ color: color }}>
+      {children}
+    </div>
+  );
+};
 
-const CommunityLink = styled(motion(Link))`
-  font-size: 1rem;
-  @media (min-width: 992px) {
-    font-size: 1.5rem;
-  }
-  @media (min-width: 1400px) {
-    font-size: 2rem;
-  }
-  z-index: 2;
-  &:hover {
-    color: black;
-  }
-`;
+const CommunityLink = ({ children, go }) => {
+  return (
+    <motion.span className={styles.communityLink}>
+      <Link to={go}>{children}</Link>
+    </motion.span>
+  );
+};
 
-const Circle = styled(motion.span)`
-  position: absolute;
-  background-color: #5f9ea0;
-  width: 100%;
-  height: 100%;
-  border-radius: 0.7rem;
-`;
+const Circle = ({ children, layId }) => {
+  return (
+    <motion.div layoutId={layId} className={styles.circle}>
+      {children}
+    </motion.div>
+  );
+};
 
-const ClubLinkContainer = styled(motion.div)`
-  position: relative;
-  display: flex;
-  border: 1px solid black;
-  background-color: white;
-  border-radius: 0.3rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 7rem;
-  height: 1.5rem;
-  font-size: 1rem;
-  @media (min-width: 992px) {
-    width: 9rem;
-    height: 3rem;
-    font-size: 1rem;
-  }
-  @media (min-width: 1400px) {
-    width: 10rem;
-    height: 3rem;
-    font-size: 1.5rem;
-  }
-  cursor: pointer;
-`;
-const ClubLinkShow = styled(motion.div)`
-  width: 13rem;
-  height: 16rem;
-  /* border: 1px solid black; */
-  border-radius: 3%;
-  /* background-color: tomato; */
-  position: absolute;
-  top: 2rem;
-  @media (min-width: 992px) {
-    top: 4rem;
-  }
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-`;
+const ClubLinkContainer = ({ children, reference, onClick }) => {
+  return (
+    <motion.div
+      className={styles.clubLinkContainer}
+      ref={reference}
+      onClick={onClick}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const ClubLinkShow = ({ children, reference, variants, initial, animate }) => {
+  return (
+    <motion.div
+      className={styles.clubLinkShow}
+      ref={reference}
+      variants={variants}
+      initial={initial}
+      animate={animate}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 const ClubLinkShowVariants = {
   init: {
     scale: 0,
@@ -156,22 +149,26 @@ const ClubLinkShowVariants = {
   },
 };
 
-const ClubLinkDiv = styled(motion.div)`
-  width: 100%;
-  background-color: white;
-  /* border-bottom: 1px solid black; */
-  height: 2rem;
-  display: flex;
-  align-items: center;
-`;
+const ClubLinkDiv = ({ children, variants, whileHover }) => {
+  return (
+    <motion.div
+      variants={variants}
+      whileHover={whileHover}
+      className={styles.clubLinkDiv}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
-const ClubLink = styled(motion(Link))`
-  width: 100%;
-  margin-left: 1rem;
-  &:hover {
-    color: white;
-  }
-`;
+const ClubLink = ({ children, go }) => {
+  return (
+    <motion.div className={styles.clubLink}>
+      <Link to={go}>{children}</Link>
+    </motion.div>
+  );
+};
+
 const ClubLinkVariant = {
   hover: {
     color: "rgba(255,255,255,1)",
@@ -211,35 +208,13 @@ function Header() {
   return (
     <TopContainer>
       <FirstContainer>
-        <MainTitle
-          as={Link}
-          to="/"
-          variants={TitleVariant}
-          initial="initial"
-          whileTap="tap"
-          whileHover="hover"
-        >
-          Com-Unity
-        </MainTitle>
+        <MainTitle>Com-Unity</MainTitle>
 
         <SearchLoginContainer>
-          <Search
-            as={Link}
-            to="/search"
-            variants={SearchVariant}
-            whileTap="tap"
-            whileHover="hover"
-            initial="initial"
-          >
+          <Search>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </Search>
-          <Login
-            as={Link}
-            to="/login"
-            variants={LoginVariants}
-            whileTap="tap"
-            whileHover="hover"
-          >
+          <Login>
             <LoginButton>Login</LoginButton>
           </Login>
         </SearchLoginContainer>
@@ -247,21 +222,21 @@ function Header() {
 
       <SecondContainer>
         <LinkContainer color={homeMatch ? "white" : "black"}>
-          <CommunityLink to="/">전체글</CommunityLink>
-          {homeMatch ? <Circle layoutId="circle" /> : null}
+          <CommunityLink go="/">전체글</CommunityLink>
+          {homeMatch ? <Circle layId="circle" /> : null}
         </LinkContainer>
 
         <LinkContainer color={clubMatch ? "white" : "black"}>
-          <CommunityLink to="/club">동아리</CommunityLink>
-          {clubMatch ? <Circle layoutId="circle" /> : null}
+          <CommunityLink go="/club">동아리</CommunityLink>
+          {clubMatch ? <Circle layId="circle" /> : null}
         </LinkContainer>
         <LinkContainer color={majorMatch ? "white" : "black"}>
-          <CommunityLink to="/major">학과</CommunityLink>
-          {majorMatch ? <Circle layoutId="circle" /> : null}
+          <CommunityLink go="/major">학과</CommunityLink>
+          {majorMatch ? <Circle layId="circle" /> : null}
         </LinkContainer>
         <LinkContainer color={eventMatch ? "white" : "black"}>
-          <CommunityLink to="/event">이벤트</CommunityLink>
-          {eventMatch ? <Circle layoutId="circle" /> : null}
+          <CommunityLink go="/event">이벤트</CommunityLink>
+          {eventMatch ? <Circle layId="circle" /> : null}
         </LinkContainer>
 
         {/* {
@@ -283,7 +258,7 @@ function Header() {
         anaMatch ||
         daivMatch ? (
           <ClubLinkContainer
-            ref={clubLinkContainerRef}
+            reference={clubLinkContainerRef}
             onClick={() => {
               setClubIsClick(!clubIsClick);
             }}
@@ -291,34 +266,34 @@ function Header() {
             전체
             <FontAwesomeIcon icon={faCaretDown} />
             <ClubLinkShow
-              ref={clubLinkShowRef}
+              reference={clubLinkShowRef}
               variants={ClubLinkShowVariants}
               initial="init"
               animate={clubIsClick ? "animate" : "init"}
             >
               <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
-                <ClubLink to="/club">전체</ClubLink>
+                <ClubLink go="/club">전체</ClubLink>
               </ClubLinkDiv>
               <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
-                <ClubLink to="/club/probrain">PROBRAIN</ClubLink>
+                <ClubLink go="/club/probrain">PROBRAIN</ClubLink>
               </ClubLinkDiv>
               <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
-                <ClubLink to="/club/admin">ADMIN</ClubLink>
+                <ClubLink go="/club/admin">ADMIN</ClubLink>
               </ClubLinkDiv>
               <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
-                <ClubLink to="/club/argos">ARGOS</ClubLink>
+                <ClubLink go="/club/argos">ARGOS</ClubLink>
               </ClubLinkDiv>
               <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
-                <ClubLink to="/club/ana">A&A</ClubLink>
+                <ClubLink go="/club/ana">A&A</ClubLink>
               </ClubLinkDiv>
               <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
-                <ClubLink to="/club/motion">MOTION</ClubLink>
+                <ClubLink go="/club/motion">MOTION</ClubLink>
               </ClubLinkDiv>
               <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
-                <ClubLink to="/club/spg">SPG</ClubLink>
+                <ClubLink go="/club/spg">SPG</ClubLink>
               </ClubLinkDiv>
               <ClubLinkDiv variants={ClubLinkVariant} whileHover="hover">
-                <ClubLink to="/club/daiv">DAIV</ClubLink>
+                <ClubLink go="/club/daiv">DAIV</ClubLink>
               </ClubLinkDiv>
             </ClubLinkShow>
           </ClubLinkContainer>
