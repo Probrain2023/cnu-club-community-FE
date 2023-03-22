@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap"; //2번
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Content from '../contentsData/Content';
+import Content from "../contentsData/Content";
 
 // Small = sm = ≥576px
 // Medium = md = ≥768px
@@ -13,7 +13,8 @@ import Content from '../contentsData/Content';
 // Extra extra large = xxl = ≥1400px
 
 //예시
-{/* <Container>
+{
+  /* <Container>
   <Row>
     <Col xs={12} md={8} style={{ backgroundColor: "blue" }}>
       xs=12 md=8
@@ -22,25 +23,23 @@ import Content from '../contentsData/Content';
       xs=6 md=4
     </Col>
   </Row>
-</Container>; */}
+</Container>; */
+}
 
 // 자세한 내용 리액트 부트스트랩 참조 https://react-bootstrap.github.io/layout/breakpoints/
 
 const TopContainer = styled.div`
   width: 100vw;
   height: 200vh;
-  background-color: #F8F9FA;
+  background-color: #f2f2f2;
   position: absolute;
-  top:0;
+  top: 0;
 `;
-
-
 
 function Club() {
   return (
     <TopContainer>
-        <Content></Content>
-
+      <Content></Content>
     </TopContainer>
   );
 }
