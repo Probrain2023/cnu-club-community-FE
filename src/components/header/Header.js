@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef, useEffect } from "react";
 import styles from "../style/Header.module.css";
+import Probrain from './../club/Probrain';
 
 const TopContainer = ({ children }) => {
   return <div className={styles.topContainer}>{children}</div>;
@@ -228,7 +229,14 @@ function Header() {
 
         <LinkContainer color={clubMatch ? "white" : "black"}>
           <CommunityLink go="/club">동아리</CommunityLink>
-          {clubMatch ? <Circle layId="circle" /> : null}
+          {clubMatch ||
+        probrainMatch ||
+        spgMatch ||
+        argosMatch ||
+        adminMatch ||
+        motionMatch ||
+        anaMatch ||
+        daivMatch  ? <Circle layId="circle" /> : null}
         </LinkContainer>
         <LinkContainer color={majorMatch ? "white" : "black"}>
           <CommunityLink go="/major">학과</CommunityLink>
@@ -263,7 +271,16 @@ function Header() {
               setClubIsClick(!clubIsClick);
             }}
           >
-            전체
+            {
+              (clubMatch ? <>전체</> : null ) ||
+              (probrainMatch ? <>Probrain</> : null) ||
+              (spgMatch ? <>Spg</> : null) || 
+              (argosMatch ? <>Argos</> : null) || 
+              (adminMatch ? <>Admin</> : null) || 
+              (motionMatch ? <>Motion</> : null) || 
+              (anaMatch ? <>Ana</> : null) || 
+              (daivMatch ? <>Daiv</> : null) 
+            }
             <FontAwesomeIcon icon={faCaretDown} />
             <ClubLinkShow
               reference={clubLinkShowRef}
