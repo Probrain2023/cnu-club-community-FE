@@ -1,10 +1,10 @@
-import styled from "styled-components";
 import { Button } from "react-bootstrap"; //2번
 import { motion } from 'framer-motion';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Content from '../contentsData/Content';
+import styles from '../style/Containers.module.css';
 
 // Small = sm = ≥576px
 // Medium = md = ≥768px
@@ -26,13 +26,13 @@ import Content from '../contentsData/Content';
 
 // 자세한 내용 리액트 부트스트랩 참조 https://react-bootstrap.github.io/layout/breakpoints/
 
-const TopContainer = styled.div`
-  width: 100vw;
-  height: 220vh;
-  background-color: #F8F9FA;
-  position: absolute;
-  top:0;
-`;
+const TopContainer = ({children}) => {
+  return (
+    <div className={styles.homeTopContainer}>
+      {children}
+    </div>
+  );
+};
 
 
 function Home() {

@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Content from './../contentsData/Content';
+import TopContainer from "../bodyContainer/TopContainer";
 
 
 // Small = sm = ≥576px
@@ -26,15 +27,6 @@ import Content from './../contentsData/Content';
 </Container>; */}
 
 // 자세한 내용 리액트 부트스트랩 참조 https://react-bootstrap.github.io/layout/breakpoints/
-
-const TopContainer = styled.div`
-  width: 100vw;
-  height: 200vh;
-  background-color: #F8F9FA;
-  position: absolute;
-  top:0;
-`;
-
 
 
 function Major() {

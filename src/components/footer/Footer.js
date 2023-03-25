@@ -1,17 +1,9 @@
-import styled from 'styled-components';
-
-
-const TopContainer = styled.div`
-    
-    color: black;
-    background-color: tomato;
-    display: none;
-`
+import FooterContainer from '../bodyContainer/FooterContainer';
 
 function Footer(){
 
     return (
-        <TopContainer>BY PROB</TopContainer>
+        <FooterContainer>BY PROB</FooterContainer>
     );
 }
 

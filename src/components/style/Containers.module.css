@@ -1,0 +1,21 @@
+.topContainer {
+  width: 100vw;
+  height: 200vh;
+  background-color: #F8F9FA;
+  position: absolute;
+  top:0;
+}
+
+.footerContainer {
+  color: black;
+  background-color: tomato;
+  display: none;
+}
+
+.homeTopContainer {
+  width: 100vw;
+  height: 220vh;
+  background-color: #F8F9FA;
+  position: absolute;
+  top:0;
+}
